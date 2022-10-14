@@ -1,0 +1,227 @@
+[
+    {
+        "id": "61453f45992eeff4",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "765f0ac7c1613cb7",
+        "type": "mqtt in",
+        "z": "61453f45992eeff4",
+        "name": "",
+        "topic": "ultraSonic",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "75575b4154e83bc0",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 440,
+        "y": 320,
+        "wires": [
+            [
+                "a29aad8c61f14d2b",
+                "58f63bc57b084452",
+                "7c1633582a8c82b7"
+            ]
+        ]
+    },
+    {
+        "id": "a29aad8c61f14d2b",
+        "type": "debug",
+        "z": "61453f45992eeff4",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "58f63bc57b084452",
+        "type": "switch",
+        "z": "61453f45992eeff4",
+        "name": "Light the led",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lt",
+                "v": "10",
+                "vt": "num"
+            },
+            {
+                "t": "gte",
+                "v": "10",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 670,
+        "y": 440,
+        "wires": [
+            [
+                "5d5e4679c0fe19a5"
+            ],
+            [
+                "555643d4a93b4ee6"
+            ]
+        ]
+    },
+    {
+        "id": "580bf9fd7fe1550f",
+        "type": "mqtt out",
+        "z": "61453f45992eeff4",
+        "name": "",
+        "topic": "ledRadar",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "75575b4154e83bc0",
+        "x": 1160,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "555643d4a93b4ee6",
+        "type": "change",
+        "z": "61453f45992eeff4",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 920,
+        "y": 500,
+        "wires": [
+            [
+                "580bf9fd7fe1550f"
+            ]
+        ]
+    },
+    {
+        "id": "5d5e4679c0fe19a5",
+        "type": "change",
+        "z": "61453f45992eeff4",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "1",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 920,
+        "y": 380,
+        "wires": [
+            [
+                "580bf9fd7fe1550f"
+            ]
+        ]
+    },
+    {
+        "id": "7c1633582a8c82b7",
+        "type": "ui_gauge",
+        "z": "61453f45992eeff4",
+        "name": "",
+        "group": "e0238fa42e227729",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Captor value",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "500",
+        "colors": [
+            "#00b500",
+            "#00e6cb",
+            "#8c00ff"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 670,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "75575b4154e83bc0",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.100.19",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "e0238fa42e227729",
+        "type": "ui_group",
+        "name": "Dashboard",
+        "tab": "364090a8dfb1bed5",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "364090a8dfb1bed5",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
